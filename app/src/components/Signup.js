@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { Input, makeStyles } from '@material-ui/core'
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+}));
 
 // const initialSignupForm = {
 //     name: '',
@@ -18,6 +26,9 @@ import React, { useState, useEffect } from 'react'
 
 
 export default function Signup() {
+
+    const classes = useStyles();
+
 
     // const [data, setData] = useState(initialSignup)
     // const [signup, setSignup] = useState(initialSignupForm)
@@ -74,44 +85,34 @@ export default function Signup() {
             <div className='form-group inputs'>
                 <h4>Information</h4>
 
-                <label> Name&nbsp;
-                    <input
+                    <Input
                         // value={values.name}
                         // onChange={onInputChange}
-                        name='name'
+                        placeholder='NAME'
                         type='text'
                     />
-                </label>
-                <label>Username
-                    <input 
-                    name='username'
+                    <Input 
+                    placeholder='USERNAME'
                     type='text'
                     /> 
-                </label>
-                <label>Email
-                    <input 
-                    name='email'
+                    <Input 
+                    placeholder='EMAIL'
                     type='email'
                     />
-                </label>
 
-                <label>Phonenumber
-                    <input
+                    <Input
                         // value={values.email}
                         // onChange={onInputChange}
-                        name='phonenumber'
+                        placeholder='PHONENUMBER'
                         type='text'
                     />
-                </label>
 
-                <label>Password
-                    <input
-                        type='text'
-                        name='password'
+                    <Input
+                        type='password'
+                        placeholder='PASSWORD'
                         // value={values.password}
                         // onChange={onInputChange}
                     />
-                </label>
             </div>
         </form>
     )
