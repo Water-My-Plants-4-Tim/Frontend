@@ -92,12 +92,12 @@ export default function Signup() {
                         type='text'
                     />
                     <Input 
-                    placeholder='USERNAME'
-                    type='text'
+                        placeholder='USERNAME'
+                        type='text'
                     /> 
                     <Input 
-                    placeholder='EMAIL'
-                    type='email'
+                        placeholder='EMAIL'
+                        type='email'
                     />
 
                     <Input
