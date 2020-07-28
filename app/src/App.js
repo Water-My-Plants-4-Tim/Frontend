@@ -10,6 +10,7 @@ import Signup from './components/Signup'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute'
+import Plant from './components/Plant'
 
 function App() {
   
@@ -21,6 +22,7 @@ function App() {
     <Router>
       <div className="App">
         <Nav />
+        {/* <Plant /> */}
         <Switch>
           <PrivateRoute exact path='/protected' component={Dashboard} />
           <Route  path='/login' component={Login} />
