@@ -21,8 +21,8 @@ function App() {
         <Nav />
         <Switch>
 
-          <Signup />
           <Route exact path='/' component={Login} />
+          <Signup />
 
         </Switch>
       </div>
