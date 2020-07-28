@@ -15,7 +15,7 @@ const Nav = () => {
         <div>
             <AppBar position="sticky">
                 <Toolbar>
-                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                <Button variant='outlined' color='seconday' aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                    Water My Plants
                 </Button>
                 <Menu
