@@ -18,7 +18,9 @@ const DashBoard = () => {
             <Typography variant='h3' gutterBottom>
                 Dashboard
             </Typography>
+            <PlantList />
             <Switch>
+                
 
             </Switch>
         </div>
