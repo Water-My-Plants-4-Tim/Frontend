@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Input, makeStyles, Button, FormHelperText } from '@material-ui/core'
+import { Input, makeStyles, Button, FormHelperText, Typography, Link } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -90,8 +90,11 @@ export default function Signup() {
 
 
     return (
-        <form>
-            <div className={classes.root}>
+        <div className={classes.root}>
+            <form 
+                // onSubmit={submit}
+            
+            >
                 <h4>Information</h4>
 
                     <Input
@@ -128,7 +131,9 @@ export default function Signup() {
                         // onChange={onInputChange}
                     />
                     <Button>Sign Up</Button>
-            </div>
-        </form>
+            </form>
+            <Typography>Already have an account?</Typography>
+            <Link href='/login'>Log In</Link>
+        </div>
     )
 }
