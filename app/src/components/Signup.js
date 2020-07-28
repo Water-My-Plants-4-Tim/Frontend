@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { Input, makeStyles } from '@material-ui/core'
+import { Input, makeStyles, Button, FormHelperText, Typography, Link } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
         margin: theme.spacing(1),
       },
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
+    textField: {
+        width: '40ch',
+        display: 'flex',
+      
+    }
 }));
 
 // const initialSignupForm = {
@@ -81,28 +90,35 @@ export default function Signup() {
 
 
     return (
-        <form>
-            <div className='form-group inputs'>
+        <div className={classes.root}>
+            <form 
+                // onSubmit={submit}
+            
+            >
                 <h4>Information</h4>
 
                     <Input
                         // value={values.name}
                         // onChange={onInputChange}
+                        className={classes.textField}
                         placeholder='NAME'
                         type='text'
                     />
                     <Input 
-                    placeholder='USERNAME'
-                    type='text'
+                        className={classes.textField}
+                        placeholder='USERNAME'
+                        type='text'
                     /> 
                     <Input 
-                    placeholder='EMAIL'
-                    type='email'
+                        className={classes.textField}
+                        placeholder='EMAIL'
+                        type='email'
                     />
 
                     <Input
                         // value={values.email}
                         // onChange={onInputChange}
+                        className={classes.textField}
                         placeholder='PHONENUMBER'
                         type='text'
                     />
@@ -110,10 +126,14 @@ export default function Signup() {
                     <Input
                         type='password'
                         placeholder='PASSWORD'
+                        className={classes.textField}
                         // value={values.password}
                         // onChange={onInputChange}
                     />
-            </div>
-        </form>
+                    <Button>Sign Up</Button>
+            </form>
+            <Typography>Already have an account?</Typography>
+            <Link href='/login'>Log In</Link>
+        </div>
     )
 }

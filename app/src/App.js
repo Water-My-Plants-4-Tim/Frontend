@@ -1,19 +1,36 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+
+
 import Nav from './components/Nav'
 import Signup from './components/Signup'
 import Login from './components/Login'
+import Dashboard from './components/Dashboard';
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
+  
   return (
-    <div className="App">
-      <Nav />
-      <Signup />
-      <Login />
-      
-    </div>
+
+
+    
+
+    <Router>
+      <div className="App">
+        <Nav />
+        <Switch>
+          <PrivateRoute exact path='/protected' component={Dashboard} />
+          <Route  path='/login' component={Login} />
+          <Route path='/' component={Signup} />
+
+        </Switch>
+      </div>
+    </Router>
   );
+
 }
 
 export default App;
