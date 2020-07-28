@@ -61,7 +61,7 @@ export default function Login() {
                 className={classes.root} 
                 noValidate 
                 autoComplete="off"
-                // onSubmit={login}
+                onSubmit={login}
             >
                 <Input 
                     name='username'
