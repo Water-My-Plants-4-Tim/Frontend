@@ -18,9 +18,10 @@ export default function NewPlant() {
                     placeholder='Species'
                     type='text'
                 />
-                
+
                 <Input
                     placeholder='h2oFrequency'
+                    type='text'
                 />
 
             </div>
