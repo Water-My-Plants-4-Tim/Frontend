@@ -24,9 +24,9 @@ function App() {
         <Nav />
         {/* <Plant /> */}
         <Switch>
-          <Route  path='/login' component={Login} />
+          <Route exact path='/protected' component={Dashboard} />
+          <Route exact path='/login' component={Login} />
           <Route path='/' component={Signup} />
-          <Route exact path='/' component={Dashboard} />
 
         </Switch>
       </div>

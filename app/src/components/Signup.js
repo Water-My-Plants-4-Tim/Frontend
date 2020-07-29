@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import * as yup from 'yup'
 import formSchema from './formSchema'
@@ -39,6 +40,7 @@ export default function Signup() {
 
     const classes = useStyles();
 
+    const { location, push } = useHistory(); 
 
     const [data, setData] = useState(initialSignup)
     const [signup, setSignup] = useState(initialSignupForm)
@@ -52,6 +54,8 @@ export default function Signup() {
                 console.log(res.data, 'res test')
                 setData([...data, res.data])
                 setSignup(initialSignupForm)
+                push('/login')
+                
             })
             .catch(err => {
                 console.dir(err)
