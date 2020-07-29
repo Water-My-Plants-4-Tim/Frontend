@@ -1,23 +1,23 @@
-// import React, { useContext } from 'react';
-// import { PlantContext } from '../contexts/PlantContext';
+import React, { useContext } from 'react';
+import { PlantContext } from './Dashboard';
 
 
-// // Components
-// import Plant from './Plant';
+// Components
+import Plant from './Plant';
 
-// const PlantList = () => {
-// 	const { plant, addPlant } = useContext(PlantContext)
-// 	return (
-// 		<div className="products-container">
-// 			{products.map(product => (
-// 				<Product
-// 					key={product.id}
-// 					product={product}
-// 					addItem={addItem}
-// 				/>
-// 			))}
-// 		</div>
-// 	);
-// };
+const PlantList = () => {
+	const { plants } = useContext(PlantContext)
+    console.log("PlantList -> plants", plants)
+	return (
+		<div className="products-container">
+			{plants.map(plant => (
+				<Plant
+					key={plant.id}
+					plant={plant}
+				/>
+			))}
+		</div>
+	);
+};
 
-// export default Products;
+export default PlantList

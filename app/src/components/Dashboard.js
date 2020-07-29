@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext, useState } from 'react'
 import NewPlant from './NewPlant'
 import PlantList from './PlantList'
 import Plant from './Plant'
@@ -11,14 +11,37 @@ const useStyles = makeStyles({
         maxWidth: 500,
     },
 })
+
+const initialPlants = [
+    {
+        id: 1,
+        nickname: 'Steve',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+]
+
+export const PlantContext = createContext()
+console.log("PlantContext", PlantContext)
+
 const DashBoard = () => {
+    const [plants, setPlants] = useState(initialPlants)
     const classes = useStyles();
     return (
         <div className={classes.root}>
             <Typography variant='h3' gutterBottom>
                 Dashboard
             </Typography>
-            <PlantList />
+            <PlantContext.Provider value={{ plants }}>
+                <PlantList />
+
+            </PlantContext.Provider>
             <Switch>
                 
 
