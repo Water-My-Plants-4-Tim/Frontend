@@ -23,12 +23,12 @@ function App() {
       <div className="App">
         <Nav />
         {/* <Plant /> */}
-        <Switch>
+        {/* <Switch> */}
           <Route exact path='/protected' component={Dashboard} />
           <Route exact path='/login' component={Login} />
-          <Route path='/' component={Signup} />
+          <Route exact path='/' component={Signup} />
 
-        </Switch>
+        {/* </Switch> */}
       </div>
     </Router>
   );

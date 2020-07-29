@@ -1,5 +1,4 @@
 import React, { createContext, useState } from 'react'
-import NewPlant from './NewPlant'
 import PlantList from './PlantList'
 import Plant from './Plant'
 import { Typography, makeStyles } from '@material-ui/core'
@@ -20,68 +19,17 @@ const initialPlants = [
         id: 1,
         nickname: 'Steve',
         species: 'Cactus',
-        h2oFrequency:'Until he says stop'
+        h2oFrequency:'Until he says stop',
+        location: 'Inside'
     },
     {
         id: 2,
         nickname: 'Bob',
         species: 'Cactus',
-        h2oFrequency:'Until he says stop'
+        h2oFrequency:'Until he says stop',
+        location: 'Outside'
     },
-    {
-        id: 2,
-        nickname: 'Bob',
-        species: 'Cactus',
-        h2oFrequency:'Until he says stop'
-    },
-    {
-        id: 2,
-        nickname: 'Bob',
-        species: 'Cactus',
-        h2oFrequency:'Until he says stop'
-    },
-    {
-        id: 2,
-        nickname: 'Bob',
-        species: 'Cactus',
-        h2oFrequency:'Until he says stop'
-    },
-    {
-        id: 2,
-        nickname: 'Bob',
-        species: 'Cactus',
-        h2oFrequency:'Until he says stop'
-    },
-    {
-        id: 2,
-        nickname: 'Bob',
-        species: 'Cactus',
-        h2oFrequency:'Until he says stop'
-    },
-    {
-        id: 2,
-        nickname: 'Bob',
-        species: 'Cactus',
-        h2oFrequency:'Until he says stop'
-    },
-    {
-        id: 2,
-        nickname: 'Bob',
-        species: 'Cactus',
-        h2oFrequency:'Until he says stop'
-    },
-    {
-        id: 2,
-        nickname: 'Bob',
-        species: 'Cactus',
-        h2oFrequency:'Until he says stop'
-    },
-    {
-        id: 2,
-        nickname: 'Bob',
-        species: 'Cactus',
-        h2oFrequency:'Until he says stop'
-    },
+   
     
 ]
 
@@ -100,11 +48,11 @@ const DashBoard = () => {
                 <PlantContext.Provider value={{ plants }}>
                     <PlantList />
 
-                </PlantContext.Provider>
-                <Switch>
-                    
+                    <Switch>
+                        
 
-                </Switch>
+                    </Switch>
+                </PlantContext.Provider>
             </div>
         </>
     )
