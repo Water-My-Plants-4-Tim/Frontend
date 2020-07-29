@@ -1,11 +1,14 @@
 import React from 'react';
 import { makeStyles, CardHeader } from '@material-ui/core'
+import { Route } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import NewPlant from './NewPlant'
+
 
 
 const useStyles = makeStyles({
@@ -52,6 +55,12 @@ const Plant = props => {
                 >
                     H2O Frequency: {props.plant.h2oFrequency}
                 </Typography>
+                <Typography 
+                    variant="body2" component="p" gutterBottom
+                >
+                    Location: {props.plant.location}
+                </Typography>
+                {/* <Route exact path='/protected/newplant' component={NewPlant} /> */}
             </CardContent>
             <CardActions>
                 <Button size='small'>Button Action</Button>
