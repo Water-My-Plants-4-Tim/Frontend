@@ -1,7 +1,9 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+
 
 import Nav from './components/Nav'
 import Signup from './components/Signup'
@@ -10,29 +12,19 @@ import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute'
 import Plant from './components/Plant'
 
-
-export const PlantContext = createContext();
-console.log("PlantContext", PlantContext)
-
-
-const initialPlants = []
 function App() {
-  const [plants, setPlants] = useState(initialPlants)
-  console.log("App -> plants", plants)
-
+  
   return (
+
+
     
 
     <Router>
       <div className="App">
-        <Nav />      
+        <Nav />
+        {/* <Plant /> */}
         <Switch>
-          <PlantContext.Provider
-            value={{ plants }}
-          >
-            <PrivateRoute exact path='/protected' component={Dashboard} />
-          </PlantContext.Provider>
-
+          <Route exact path='/' component={Dashboard} />
           <Route  path='/login' component={Login} />
           <Route path='/' component={Signup} />
 
