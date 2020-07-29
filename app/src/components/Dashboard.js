@@ -8,7 +8,10 @@ import { Switch, Route } from 'react-router-dom'
 const useStyles = makeStyles({
     root: {
         width: "100%",
-        maxWidth: 500,
+        display: 'flex',
+        flexWrap: 'nowrap',
+        // justifyContent: 'center',
+        // alignItems: 'center',
     },
 })
 
@@ -25,6 +28,61 @@ const initialPlants = [
         species: 'Cactus',
         h2oFrequency:'Until he says stop'
     },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop'
+    },
+    
 ]
 
 export const PlantContext = createContext()
@@ -34,19 +92,21 @@ const DashBoard = () => {
     const [plants, setPlants] = useState(initialPlants)
     const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <>
             <Typography variant='h3' gutterBottom>
                 Dashboard
             </Typography>
-            <PlantContext.Provider value={{ plants }}>
-                <PlantList />
+            <div className={classes.root}>
+                <PlantContext.Provider value={{ plants }}>
+                    <PlantList />
 
-            </PlantContext.Provider>
-            <Switch>
-                
+                </PlantContext.Provider>
+                <Switch>
+                    
 
-            </Switch>
-        </div>
+                </Switch>
+            </div>
+        </>
     )
 }
 export default DashBoard
