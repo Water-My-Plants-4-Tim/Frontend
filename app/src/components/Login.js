@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Input, makeStyles, Button } from '@material-ui/core'
+import { Input, makeStyles, Button, Link } from '@material-ui/core'
 import axios from 'axios'
 import formSchema from './formSchema'
 import * as yup from 'yup'
@@ -41,30 +41,33 @@ const initialDisabled = true;
 export default function Login() {
 
     const classes = useStyles();
-
+    const [credentials, setCredentials] = useState({ username: '', password: '' });
     const [data, setData] = useState(initialLogin)
     const [login, setLogin] = useState(initialLoginForm)
     const [error, setError] = useState(initialLoginError)
     const [disabled, setDisabled] = useState(initialDisabled)
     const { push } = useHistory()
 
-    const loginData = e => {
-        e.preventDefault();
 
-        axiosWithAuth()
-            .post('https://elton-watermyplants.herokuapp.com/login', {
-                username: state.credentials.username,
-                password: state.credentials.password
-            })
-            .then(res => {
-                console.log('res test', res)
-                console.log("Login -> res.data", res.data.payload)
-                localStorage.setItem('token', res.data.payload)
-                push('/protected')
-            })
-            .catch(err => console.log(err))
 
-    }
+    // const loginData = e => {
+    //     e.preventDefault();
+
+    //     axiosWithAuth()
+    //         .post('https://water-my-pants.herokuapp.com/auth/login', {
+    //             username: state.credentials.username,
+    //             password: state.credentials.password
+    //         })
+    //         .then(res => {
+    //             console.log('res test', res)
+    //             console.log("Login -> res.data", res.data.payload)
+    //             localStorage.setItem('token', res.data.payload)
+    //             push('/protected')
+    //         })
+    //         .catch(err => console.log(err))
+    // }
+
+
 
     const state = {
         credentials: {
@@ -72,6 +75,8 @@ export default function Login() {
             password: ''
         }
     }
+
+
 
 
     const validateInput = (name, value) => {
@@ -94,6 +99,23 @@ export default function Login() {
 
     }
 
+
+    const handleChange = e => {
+        validateInput(e.target.name, e.target.value)
+        setCredentials({
+            credentials: {
+                ...credentials,
+                [e.target.name]: e.target.value
+            }
+        })
+        console.log(credentials, 'testing testing')
+    }
+    console.log(credentials, 'testing testing 123')
+
+
+
+
+
     // const info = (props) => {
     //     const [credentials, setCredentials] = useState({ username: '', password: '' });
     //     const login = e => {
@@ -113,26 +135,40 @@ export default function Login() {
     //     }
     // }
 
-    const handleChange = e => {
-        validateInput(e.target.name, e.target.value)
-        setLogin({
-            ...login,
-            [e.target.name]: e.target.value
-        })
-        console.log(login, 'login test')
-    }
+    // const handleChange = e => {
+    //     validateInput(e.target.name, e.target.value)
+    //     setLogin({
+    //         ...login,
+    //         [e.target.name]: e.target.value
+    //     })
+    //     console.log(login, 'login test')
+    // }
+
+
+
 
     const submit = (e) => {
+        e.preventDefault()
         const logging = {
             username: login.username.trim(),
             password: login.password.trim()
         }
+        axiosWithAuth()
+            .post('/api/auth/login', logging)
+            .then(res => {
+                console.log('res test', res)
+                console.log("Login -> res.data", res.data.payload)
+                localStorage.setItem('token', res.data.payload)
+                push('/protected')
+            })
+            .catch(err => console.log(err))
+
         console.log(logging, 'logging in')
     }
 
     // https://cors-anywhere.herokuapp.com/
 
-    
+
 
     useEffect(() => {
         formSchema.isValid(login).then(valid => {
@@ -169,8 +205,11 @@ export default function Login() {
                         onChange={handleChange}
                     />
                 </label>
-                <Button type='submit'>Log In</Button>
+                <Link to='/protected'>
+                <Button >Log In</Button>
+                </Link>
             </form>
         </div>
     )
 }
+// export default Login

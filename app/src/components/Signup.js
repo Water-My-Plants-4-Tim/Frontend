@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import * as yup from 'yup'
 import formSchema from './formSchema'
@@ -27,13 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-
-
-
 const initialSignupForm = {
     username: "",
     password: "",
 }
+
 const initialError = {
     username: "",
     password: "",
@@ -48,25 +47,62 @@ export default function Signup() {
 
     const classes = useStyles();
 
+    const { location, push } = useHistory();
 
-    const [data, setData] = useState(initialSignup)
+    // const [data, setData] = useState(initialSignup)
     const [signup, setSignup] = useState(initialSignupForm)
     const [error, setError] = useState(initialError)
     const [disabled, setDisabled] = useState(initialDisabled)
 
     const postData = newData => {
-        console.log(newData, 'testing new data')
-        axios.post('https://cors-anywhere.herokuapp.com/https://elton-watermyplants.herokuapp.com/createnewuser', newData)
+        // const [text, setText] = React.useState("waiting...");
+
+        axios.post('https://water-my-pants.herokuapp.com/api/auth/register', newData)
             .then(res => {
+                // if (!isCancelled) {
                 console.log(res.data, 'res test')
-                setData([...data, res.data])
-                setSignup(initialSignupForm)
+                // setData([...data, res.data])
+                // setSignup(initialSignupForm)
+                push('/login')
+                // setText("done!");
+                // }
             })
             .catch(err => {
+                debugger
                 console.dir(err)
                 setSignup(initialSignupForm)
             })
     }
+
+    // React.useEffect(() => {
+    //     let isCancelled = false;
+
+
+    //     return () => {
+    //         isCancelled = true;
+    //     };
+    // }, []);
+
+    // return <h2>{text}</h2>;
+
+
+    // const postData = newData => {
+    //     console.log(newData, 'testing new data')
+    //     axios.post('https://water-my-pants.herokuapp.com/api/auth/register', newData)
+    //         .then(res => {
+    //             console.log(res.data, 'res test')
+    //             // setData([...data, res.data])
+    //             setSignup(initialSignupForm)
+    //             push('/login')
+
+    //         })
+    //         .catch(err => {
+    //             console.dir(err)
+    //             setSignup(initialSignupForm)
+    //         })
+    // }
+
+
 
     const validateInput = (name, value) => {
         yup
