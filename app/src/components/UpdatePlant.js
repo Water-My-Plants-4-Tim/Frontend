@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
-import uuid from 'react-uuid'
+import Input from '@material-ui/core/Input'
+import Button from '@material-ui/core/Button'
 
 const initialPlant = {
-    id: uuid(),
     nickname: '',
     species: '',
     h2oFrequency:'',
@@ -23,13 +23,14 @@ const UpdatePlant = props => {
         } else {
             axios
                 .get('')
-                .then(res => setMovie(res.data))
+                .then(res => setPlant(res.data))
                 .catch(err => console.lot(err))
         }
     }, [])
 
     const changeHandler = evt => {
         evt.persist();
+        let value = evt.target.value;
         setPlant({
             ...plant,
             [evt.target.name]: value
@@ -50,7 +51,6 @@ const UpdatePlant = props => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label>nickname</label>
                 <Input 
                     type="text"
                     name="nickname"
@@ -58,7 +58,6 @@ const UpdatePlant = props => {
                     placeholder="nickname"
                     value={plant.nickname}
                 />
-                <label>species</label>
                 <Input 
                     type="text"
                     name="species"
@@ -66,7 +65,6 @@ const UpdatePlant = props => {
                     placeholder="species"
                     value={plant.species}
                 />
-                <label>h2oFrequency</label>
                 <Input 
                     type="text"
                     name="h2oFrequency"
@@ -74,7 +72,6 @@ const UpdatePlant = props => {
                     placeholder="h2oFrequency"
                     value={plant.h2oFrequency}
                 />
-                <label>location</label>
                 <Input 
                     type="text"
                     name="location"
@@ -82,7 +79,7 @@ const UpdatePlant = props => {
                     placeholder="location"
                     value={plant.location}
                 />
-                <Button size='small'>Update</Button>
+                <Button type='submit' size='small'>Update</Button>
             </form>
         </div>
     )

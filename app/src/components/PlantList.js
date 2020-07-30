@@ -7,7 +7,7 @@ import Plant from './Plant';
 
 const PlantList = () => {
 	const { plants } = useContext(PlantContext)
-    console.log("PlantList -> plants", plants)
+    // console.log("PlantList -> plants", plants)
 	return (
 		<div className="products-container">
 			{plants.map(plant => (
