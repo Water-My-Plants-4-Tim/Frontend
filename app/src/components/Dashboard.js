@@ -20,45 +20,45 @@ const useStyles = makeStyles({
 })
 
 const initialPlants = [
-    // {
-    //     id: 1,
-    //     nickname: 'Steve',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Inside'
-    // },
-    // {
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },
-    // {
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },{
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },{
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },{
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },
+    {
+        id: 1,
+        nickname: 'Steve',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop',
+        location: 'Inside'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop',
+        location: 'Outside'
+    },
+    {
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop',
+        location: 'Outside'
+    },{
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop',
+        location: 'Outside'
+    },{
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop',
+        location: 'Outside'
+    },{
+        id: 2,
+        nickname: 'Bob',
+        species: 'Cactus',
+        h2oFrequency:'Until he says stop',
+        location: 'Outside'
+    },
    
     
 ]
@@ -73,17 +73,11 @@ const initialFormValues = {
 // }
 export const PlantContext = createContext()
 // console.log("PlantContext", PlantContext)
-
 const DashBoard = () => {
     const [plants, setPlants] = useState(initialPlants)
     const [formValues, setFormValues] = useState(initialFormValues)
 
     const classes = useStyles();
-
-    useEffect (() => {
-
-    })
-
     const addPlant = newPlant => {
         axios
             .post('https://cors-anywhere.herokuapp.com/https://elton-watermyplants.herokuapp.com/plants/users/plants', newPlant)

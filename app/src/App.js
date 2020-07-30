@@ -23,12 +23,18 @@ function App() {
       <div className="App">
         <Nav />
         {/* <Plant /> */}
-        {/* <Switch> */}
-          <Route exact path='/' component={Dashboard} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/Signup' component={Signup} />
+        <Switch>
 
-        {/* </Switch> */}
+          <Route path='/dashboard'>
+            <Dashboard />
+          </Route>
+          <Route path='/login' >
+            <Login />
+          </Route>
+          <Route path='/'>
+            <Signup />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );

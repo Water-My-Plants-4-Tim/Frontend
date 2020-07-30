@@ -1,8 +1,12 @@
 import React from 'react';
 import { Menu, AppBar, Toolbar, Button, MenuItem, } from '@material-ui/core'
+import { Link, useRouteMatch} from 'react-router-dom'
 
 const Nav = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const { url, path } = useRouteMatch()
+    console.log("Nav -> path", path)
+    console.log("Nav -> url", url)
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -27,11 +31,26 @@ const Nav = () => {
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
                     >
-                        <MenuItem onClick={handleClose, () => { console.log('button is clicked') }}>Home</MenuItem>
-                        <MenuItem onClick={handleClose}>Link2</MenuItem>
-                        <MenuItem onClick={handleClose}>Link3</MenuItem>
-                        <MenuItem onClick={handleClose}>Link4</MenuItem>
-                        <MenuItem onClick={handleClose}>Link5</MenuItem>
+                        <Link to='/'>
+                            <MenuItem onClick={handleClose, () => { console.log('button is clicked') }}>Home</MenuItem>
+                        </Link>
+                        <Link exact to='/login'>
+                            <MenuItem onClick={handleClose}>Log In</MenuItem>
+                        </Link>
+
+                        <Link to='/'>
+                            <MenuItem onClick={handleClose}>Sign Up</MenuItem>
+                        </Link>
+
+                        <Link to='/dashboard'>
+                            <MenuItem onClick={handleClose}>Link4</MenuItem>
+                        </Link>
+
+                        <Link to='/'>
+                            <MenuItem onClick={handleClose}>Link5</MenuItem>
+                        </Link>
+
+
 
                     </Menu>
                 </Toolbar>

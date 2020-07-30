@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, CardHeader } from '@material-ui/core'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -60,10 +60,13 @@ const Plant = props => {
                 >
                     Location: {props.plant.location}
                 </Typography>
-                {/* <Route exact path='/protected/newplant' component={NewPlant} /> */}
-                <UpdatePlant/>
+                <Route exact path='/protected/newplant' component={NewPlant} />
+                {/* <UpdatePlant/> */}
                 <CardActions>
-                    <Button size='large' elevation={5} >Edit Plant</Button>
+                    <Link to=''>
+                        <Button size='large' elevation={5} >Edit Plant</Button>
+                    
+                    </Link>
                 </CardActions>
             </CardContent>
         </Card>
