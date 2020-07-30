@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import NewPlant from './NewPlant'
+import UpdatePlant from './UpdatePlant'
 
 
 
@@ -15,7 +16,6 @@ const useStyles = makeStyles({
     root: {
         margin: 20,
         padding: 20,
-        height: 200,
         width:250,
     },
     title: {
@@ -61,10 +61,11 @@ const Plant = props => {
                     Location: {props.plant.location}
                 </Typography>
                 {/* <Route exact path='/protected/newplant' component={NewPlant} /> */}
+                <UpdatePlant/>
+                <CardActions>
+                    <Button size='large' elevation={5} >Edit Plant</Button>
+                </CardActions>
             </CardContent>
-            <CardActions>
-                <Button size='small'>Button Action</Button>
-            </CardActions>
         </Card>
     )
 };
