@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import * as yup from 'yup'
 import formSchema from './formSchema'
-import { Input, makeStyles, Button, FormHelperText, Typography, Link } from '@material-ui/core'
+import { Input, makeStyles, Button, FormHelperText, Typography, Link, } from '@material-ui/core'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -13,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        border: 'solid',
+        margin: '275px',
+
     },
     textField: {
         width: '40ch',
@@ -20,6 +24,11 @@ const useStyles = makeStyles((theme) => ({
 
     }
 }));
+
+
+
+
+
 
 const initialSignupForm = {
     username: "",
@@ -85,6 +94,7 @@ export default function Signup() {
             ...signup,
             [e.target.name]: e.target.value
         })
+        console.log(signup, 'signup test')
     }
 
     const submit = (e) => {
@@ -105,37 +115,39 @@ export default function Signup() {
 
     return (
         <div className={classes.root}>
-            <form onSubmit={submit}>            
-                <h4>Information</h4>
+
+            <form onSubmit={submit}>
+                <h4>Sign Up Here</h4>
 
                 <div className='error'>
                     <div>{error.username}</div>
                     <div>{error.password}</div>
                 </div>
 
-            <label>Username
+                <label>Username
                 <Input
-                    className={classes.textField}
-                    placeholder='USERNAME'
-                    name='username'
-                    type='text'
-                    onChange={handleChange}
-                />
-            </label>
+                        className={classes.textField}
+                        placeholder='USERNAME'
+                        name='username'
+                        type='text'
+                        onChange={handleChange}
+                    />
+                </label>
 
-            <label>Password
+                <label>Password
                 <Input
-                    type='password'
-                    placeholder='PASSWORD'
-                    name='password'
-                    className={classes.textField}
-                    onChange={handleChange}
-                />
-            </label>
-            <Button disabled={disabled} type="submit">Sign Up</Button>
+                        type='password'
+                        placeholder='PASSWORD'
+                        name='password'
+                        className={classes.textField}
+                        onChange={handleChange}
+                    />
+                </label>
+                <Button disabled={disabled} type="submit">Sign Up</Button>
             </form>
-        <Typography>Already have an account?</Typography>
-        <Link href='/login'>Log In</Link>
+            <Typography>Already have an account?</Typography>
+            <Link href='/login'>Log In</Link>
+
         </div>
     )
 }
