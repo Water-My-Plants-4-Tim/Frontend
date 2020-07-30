@@ -88,7 +88,9 @@ export default function MenuListComposition() {
                                             <MenuItem onClick={handleClose}>Dashboard</MenuItem>
                                         </Link>
                                         <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                                        <Link href='/Signup' underline='none'>
                                         <MenuItem onClick={handleClose}>Sign up</MenuItem>
+                                        </Link>
                                         <Link href='/login' underline='none'>
                                             <MenuItem onClick={handleClose}>Log in</MenuItem>
                                         </Link>

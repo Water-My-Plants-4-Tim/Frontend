@@ -205,7 +205,7 @@ export default function Login() {
                         onChange={handleChange}
                     />
                 </label>
-                <Link to='/protected'>
+                <Link href='/'>
                 <Button >Log In</Button>
                 </Link>
             </form>
