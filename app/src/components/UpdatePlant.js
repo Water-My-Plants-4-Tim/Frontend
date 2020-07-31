@@ -7,9 +7,11 @@ import Button from '@material-ui/core/Button'
 const initialPlant = {
     nickname: '',
     species: '',
-    h2oFrequency:'',
-    location: ''
+    h2oFrequency: 0, 
+    imageURL: '',
 }
+
+
 
 const UpdatePlant = props => {
     const location = useLocation()
@@ -22,7 +24,7 @@ const UpdatePlant = props => {
             setPlant(location.state);
         } else {
             axios
-                .get('')
+                .get('https://water-my-pants.herokuapp.com/api/plants')
                 .then(res => setPlant(res.data))
                 .catch(err => console.lot(err))
         }
@@ -40,7 +42,7 @@ const UpdatePlant = props => {
     const handleSubmit = e => {
         e.preventDefault()
         axios
-            .put('', plant)
+            .put('https://water-my-pants.herokuapp.com/api/plants/:id', plant)
             .then(res => {
                 props.setPlant(res.data)
                 push('/protected')
@@ -66,7 +68,7 @@ const UpdatePlant = props => {
                     value={plant.species}
                 />
                 <Input 
-                    type="text"
+                    type="number"
                     name="h2oFrequency"
                     onChange={changeHandler}
                     placeholder="h2oFrequency"
@@ -74,9 +76,9 @@ const UpdatePlant = props => {
                 />
                 <Input 
                     type="text"
-                    name="location"
+                    name="url"
                     onChange={changeHandler}
-                    placeholder="location"
+                    placeholder="image url"
                     value={plant.location}
                 />
                 <Button type='submit' size='small'>Update</Button>

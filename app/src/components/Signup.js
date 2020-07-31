@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import * as yup from 'yup'
 import formSchema from './formSchema'
-import { Input, makeStyles, Button, FormHelperText, Typography, Link, } from '@material-ui/core'
-
+import { Input, makeStyles, Button, FormHelperText, Typography, Link, colors, } from '@material-ui/core'
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,13 +17,16 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         border: 'solid',
         margin: '275px',
+        background: 'seagreen',
+        borderRadius: '50%',
 
     },
     textField: {
         width: '40ch',
         display: 'flex',
-
+        color: ''
     }
+
 }));
 
 

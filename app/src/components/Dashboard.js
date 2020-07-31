@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
 import PlantList from './PlantList'
-import Plant from './Plant'
+// import Plant from './Plant'
 import NewPlant from './NewPlant'
 import { Typography, makeStyles } from '@material-ui/core'
 import { Switch, Route } from 'react-router-dom'
@@ -19,101 +19,110 @@ const useStyles = makeStyles({
     },
 })
 
-const initialPlants = [
-    // {
-    //     id: 1,
-    //     nickname: 'Steve',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Inside'
-    // },
-    // {
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },
-    // {
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },{
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },{
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },{
-    //     id: 2,
-    //     nickname: 'Bob',
-    //     species: 'Cactus',
-    //     h2oFrequency:'Until he says stop',
-    //     location: 'Outside'
-    // },
-   
-    
-]
+// const initialPlants = [
+//     {
+//         id: 1,
+//         nickname: 'Steve',
+//         species: 'Cactus',
+//         h2oFrequency:'7',
+//     },
+//     {
+//         id: 2,
+//         nickname: 'ook',
+//         species: 'Cactus',
+//         h2oFrequency:'8',
+        
+//     },
+//     {
+//         id: 3,
+//         nickname: 'big',
+//         species: 'Cactus',
+//         h2oFrequency:'9',
+        
+//     },{
+//         id: 4,
+//         nickname: 'ape',
+//         species: 'Cactus',
+//         h2oFrequency:'2',
+        
+//     },{
+//         id: 5,
+//         nickname: 'veeno',
+//         species: 'Cactus',
+//         h2oFrequency:'5',
+        
+//     },{
+//         id: 6,
+//         nickname: 'Bob',
+//         species: 'Cactus',
+//         h2oFrequency:'4',
+        
+//     },
+// ]
 const initialFormValues = {
     nickname: '',
     species: '',
-    h2oFrequency: '',
-    location: '',
+    h2oFrequency: 1,
+    imageURL: ''
 }
 // const getPlants = () => {
 //     axios.get('https://cors-anywhere.herokuapp.com/https://elton-watermyplants.herokuapp.com/createnewuser')
 // }
 export const PlantContext = createContext()
-// console.log("PlantContext", PlantContext)
+console.log("PlantContext", PlantContext)
 
 const DashBoard = () => {
-    const [plants, setPlants] = useState(initialPlants)
+    // const [plants, setPlants] = useState(initialPlants)
     const [formValues, setFormValues] = useState(initialFormValues)
+    console.log(formValues, 'tesing formvalues')
 
     const classes = useStyles();
 
-    useEffect (() => {
+    // useEffect (() => {
 
-    })
+    // })
 
-    const addPlant = newPlant => {
-        axios
-            .post('https://cors-anywhere.herokuapp.com/https://elton-watermyplants.herokuapp.com/plants/users/plants', newPlant)
-            .then(res => {
-                console.log(res.data)
-                setPlants([...plants, res.data])
-                
-            })
-            .catch(err => console.log(err))
-    }
+    // const addPlant = newPlant => {
+    //     console.log('Newplant', newPlant)
 
-    const onSubmit = evt => {
-        evt.preventDefault();
-        const newPlant = {
-            nickname: formValues.nickname.trim(),
-            species: formValues.species.trim(),
-            h2oFrequency: formValues.h2oFrequency.trim(),
-            location: formValues.location.trim(),
-        }
-        addPlant(newPlant)
-    }
+    // }
 
-    const onInputChange = evt => {
-        const { name, value } = evt.target
+    // const onSubmit = evt => {
+    //     console.log('Submitting')
+    //     evt.preventDefault();
+    //     const newPlant = {
+    //         nickname: formValues.nickname.trim(),
+    //         species: formValues.species.trim(),
+    //         h2oFrequency: Number(formValues.h2oFrequency),
+    //         imageURL: formValues.imageURL
+    //     }
+    //     console.log(newPlant, 'testing before')
 
-        setFormValues({
-            ...formValues,
-            [name]: value
-        })
-    }
+    //     axiosWithAuth()
+    //     .post('https://water-my-pants.herokuapp.com/api/plants', newPlant)
+    //     .then(res => {
+    //         console.log(res.data, 'does it work')
+    //         setPlants([...plants, res.data])
+            
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+
+    //    // addPlant(newPlant)
+    //     console.log(newPlant, 'testing after')
+    // }
+
+    // const onInputChange = evt => {
+    //     const { name, value } = evt.target
+
+    //     setFormValues({
+    //         ...formValues,
+    //         [name]: value
+    //     })
+    // }
+
+
 
     return (
         <>
@@ -121,11 +130,10 @@ const DashBoard = () => {
                 Dashboard
             </Typography>
             <div className={classes.root}>
-                <PlantContext.Provider value={{ plants }}>
+                {/* <PlantContext.Provider value={{ plants }}> */}
+                <PlantContext.Provider>
+
                     <NewPlant 
-                        values={formValues}
-                        onInputChange={onInputChange}
-                        onSubmit={onSubmit}
                     />
 
                     <PlantList />
@@ -136,6 +144,12 @@ const DashBoard = () => {
                     </Switch>
                 </PlantContext.Provider>
             </div>
+            {/* {
+                initialPlants.map(data => 
+                    // console.log(data, 'this is data')
+                    <p>{data.nickname}</p>
+                )
+            } */}
         </>
     )
 }

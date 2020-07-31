@@ -6,16 +6,16 @@ import { PlantContext } from './Dashboard';
 import Plant from './Plant';
 
 const PlantList = () => {
-	const { plants } = useContext(PlantContext)
+	// const { plants } = useContext(PlantContext)
     // console.log("PlantList -> plants", plants)
 	return (
 		<div className="products-container">
-			{plants.map(plant => (
+			{/* {plants.map(plant => (
 				<Plant
 					key={plant.id}
 					plant={plant}
 				/>
-			))}
+			))} */}
 		</div>
 	);
 };

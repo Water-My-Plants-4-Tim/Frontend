@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Input, makeStyles, Button, Link } from '@material-ui/core'
+import { Input, makeStyles, Button } from '@material-ui/core'
 import axios from 'axios'
 import formSchema from './formSchema'
 import * as yup from 'yup'
@@ -76,9 +76,7 @@ export default function Login() {
         }
     }
 
-
-
-
+    
     const validateInput = (name, value) => {
         yup
             .reach(formSchema, name)
@@ -99,23 +97,6 @@ export default function Login() {
 
     }
 
-
-    const handleChange = e => {
-        validateInput(e.target.name, e.target.value)
-        setCredentials({
-            credentials: {
-                ...credentials,
-                [e.target.name]: e.target.value
-            }
-        })
-        console.log(credentials, 'testing testing')
-    }
-    console.log(credentials, 'testing testing 123')
-
-
-
-
-
     // const info = (props) => {
     //     const [credentials, setCredentials] = useState({ username: '', password: '' });
     //     const login = e => {
@@ -135,14 +116,14 @@ export default function Login() {
     //     }
     // }
 
-    // const handleChange = e => {
-    //     validateInput(e.target.name, e.target.value)
-    //     setLogin({
-    //         ...login,
-    //         [e.target.name]: e.target.value
-    //     })
-    //     console.log(login, 'login test')
-    // }
+    const handleChange = e => {
+        validateInput(e.target.name, e.target.value)
+        setLogin({
+            ...login,
+            [e.target.name]: e.target.value
+        })
+        console.log(login, 'login test')
+    }
 
 
 
@@ -157,8 +138,9 @@ export default function Login() {
             .post('/api/auth/login', logging)
             .then(res => {
                 console.log('res test', res)
+
                 console.log("Login -> res.data", res.data.payload)
-                localStorage.setItem('token', res.data.payload)
+                localStorage.setItem('token', res.data.token)
                 push('/protected')
             })
             .catch(err => console.log(err))
@@ -205,9 +187,7 @@ export default function Login() {
                         onChange={handleChange}
                     />
                 </label>
-                <Link href='/'>
-                <Button >Log In</Button>
-                </Link>
+                <Button type='submit'>Log In</Button>
             </form>
         </div>
     )
